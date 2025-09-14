@@ -6,6 +6,12 @@ const Home = () => {
     const [inputValue, setInputValue] = useState('')
     const navigate = useNavigate()
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSubmit()
+        }
+    }
+
     const handleSubmit = () => {
         const length = inputValue.trim().split(/\s+/).filter(word => word.length > 0).length
         if (length < 100) {
@@ -31,6 +37,7 @@ const Home = () => {
             <p className={"text-gray-500 dark:text-gray-300 text-lg md:text-sm font-family-ubuntu font-light"}>We request you to provide the body of the article so our
                 model has information to work with</p>
             <textarea
+                onKeyDown={handleKeyDown}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder={"Enter at least 100 words from the article here"}
                 className={"border-2 border-gray-400 dark:border-gray-300 rounded-xl w-[95%] md:w-[97%] h-full text-justify mt-2 p-2 placeholder:text-center focus:border-blue-500 focus:outline-none swollen"}
