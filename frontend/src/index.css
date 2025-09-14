@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+.epunda-slab-font{
+    font-family: "Epunda Slab", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
