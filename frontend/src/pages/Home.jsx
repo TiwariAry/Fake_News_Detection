@@ -26,7 +26,7 @@ const Home = () => {
     return (
         <main className={"flex flex-col h-[100vh] items-center gap-4 dark:text-white"}>
             <h1 className={"text-7xl md:text-5xl font-bold"}>Fake News Detection</h1>
-            <p className={"text-2xl md:text-xl px-4 text-justify font-family-ubuntu font-light"}>This is a simple fake news detection website which
+            <p className={"text-2xl md:text-xl text-center font-family-ubuntu font-light"}>This is a simple fake news detection website which
                 uses the power of ML to detect whether the news you have given is fake or real</p>
             <p className={"text-gray-500 dark:text-gray-300 text-lg md:text-sm font-family-ubuntu font-light"}>We request you to provide the body of the article so our
                 model has information to work with</p>
