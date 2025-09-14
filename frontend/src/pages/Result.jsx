@@ -10,7 +10,7 @@ const Result = () => {
     const confidence = data.confidence;
 
     return (
-        <main className={"flex flex-col justify-center items-center min-h-screen epunda-slab-font gap-8 px-4"}>
+        <main className={"flex flex-col justify-center items-center h-full gap-8 px-20 my-5 dark:text-white swollen rounded-xl"}>
             <div className="text-center">
                 <h1 className={`text-6xl md:text-4xl font-bold mb-4 ${
                     result ? 'text-green-600' : 'text-red-600'
@@ -25,11 +25,11 @@ const Result = () => {
                 </div>
             </div>
 
-            <div className="text-center max-w-2xl">
-                <p className="text-gray-600 text-lg md:text-base mb-2">
+            <div className="text-center text-gray-500 dark:text-gray-400 max-w-2xl">
+                <p className="text-lg md:text-base mb-2">
                     Our AI model has analyzed the article content and provided this assessment.
                 </p>
-                <p className="text-gray-500 text-sm">
+                <p className="text-sm">
                     Please use this as guidance and verify with multiple sources for important decisions.
                 </p>
             </div>

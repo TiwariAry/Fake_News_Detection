@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from "./pages/Home.jsx";
@@ -9,22 +9,23 @@ import {useGSAP} from "@gsap/react";
 gsap.registerPlugin(useGSAP)
 
 const App = () => {
-    const [displayMode, setDisplayMode] = useState('light');
+    const [darkTheme, setDarkTheme] = useState(false);
+
+    useEffect(() => {
+        if (darkTheme) {
+            document.documentElement.setAttribute('dataTheme', 'dark');
+        } else {
+            document.documentElement.setAttribute('dataTheme', 'light');
+        }
+    }, [darkTheme]);
 
     return (
-        <main>
+        <main className={"flex flex-col h-[100vh] items-center epunda-slab-font gap-4 p-4 epunda-slab-font dark:bg-black"}>
             <div
-                className={'fixed right-3 top-4 w-[30px] active:scale-85     transition-transform ease-in'}
-                onClick={() => {
-                    if (displayMode === 'light') {
-                        setDisplayMode('dark');
-                    }
-                    else {
-                        setDisplayMode('light');
-                    }
-                }}
+                className={'fixed right-3 top-4 p-2 w-[40px] active:scale-85 transition-transform ease-in cursor-pointer dark:bg-white rounded-xl'}
+                onClick={() => setDarkTheme(!darkTheme)}
             >
-                {displayMode === 'light' ? <img src={'/light-mode.png'} alt="light mode" /> : <img src={'/dark-mode.png'} alt="dark mode" />}
+                {darkTheme ? <img src={'/dark-mode.png'} alt="dark mode" /> : <img src={'/light-mode.png'} alt="light mode" />}
             </div>
 
             <BrowserRouter>
