@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
 import {useNavigate} from 'react-router-dom'
+import LoadingScreen from "../components/LoadingScreen.jsx";
 
 const Home = () => {
     const [inputValue, setInputValue] = useState('')
@@ -30,7 +31,7 @@ const Home = () => {
     }
 
     return (
-        <main className={"flex flex-col h-[100vh] items-center gap-4 dark:text-white"}>
+        <div className={"flex flex-col h-[100vh] items-center gap-4 dark:text-white"}>
             <h1 className={"text-7xl md:text-5xl font-bold"}>Fake News Detection</h1>
             <p className={"text-2xl md:text-xl text-center font-family-ubuntu font-light"}>This is a simple fake news detection website which
                 uses the power of ML to detect whether the news you have given is fake or real</p>
@@ -48,7 +49,7 @@ const Home = () => {
             >
                 Enter
             </button>
-        </main>
+        </div>
     )
 }
 export default Home

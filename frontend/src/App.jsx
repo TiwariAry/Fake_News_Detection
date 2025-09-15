@@ -4,10 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./pages/Home.jsx";
 import Result from "./pages/Result.jsx";
 
-import { gsap } from "gsap";
-import {useGSAP} from "@gsap/react";
-gsap.registerPlugin(useGSAP)
-
 const App = () => {
     const [darkTheme, setDarkTheme] = useState(false);
 

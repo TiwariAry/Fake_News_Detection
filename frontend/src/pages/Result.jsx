@@ -1,16 +1,32 @@
-import React from 'react'
+import {useEffect, useState} from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import LoadingScreen from "../components/LoadingScreen.jsx";
 
 const Result = () => {
     const location = useLocation();
 
-    const data = location.state;
+    const data = location?.state;
 
-    const result = data.result;
-    const confidence = data.confidence;
+    const result = data?.result;
+    const confidence = data?.confidence;
+
+    const [loading, setLoading] = useState(true);
+    const [triggerExit, setTriggerExit] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setTriggerExit(true); // Tell LoadingScreen to start exit animation
+        }, 6000);
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
-        <main className={"flex flex-col justify-center items-center h-full gap-8 px-20 my-5 dark:text-white swollen rounded-xl"}>
+        <div className={"flex flex-col justify-center items-center h-full gap-8 px-20 my-5 dark:text-white swollen rounded-xl"}>
+            {loading && <LoadingScreen
+                triggerExit={triggerExit}
+                setLoading={setLoading}
+            />}
+
             <div className="text-center">
                 <h1 className={`text-6xl md:text-4xl font-bold mb-4 ${
                     result ? 'text-green-600' : 'text-red-600'
@@ -21,7 +37,7 @@ const Result = () => {
                 <div className={`inline-block px-6 py-3 rounded-full text-white text-xl md:text-lg font-semibold ${
                     result ? 'bg-green-500' : 'bg-red-500'
                 }`}>
-                    {confidence.toFixed(2)}% Confident
+                    {confidence !== undefined ? confidence.toFixed(2) : ''}% Confident
                 </div>
             </div>
 
@@ -54,7 +70,7 @@ const Result = () => {
             <div className={`text-8xl md:text-6xl ${result ? 'text-green-500' : 'text-red-500'}`}>
                 {result ? '✓' : '✗'}
             </div>
-        </main>
+        </div>
     )
 }
 
